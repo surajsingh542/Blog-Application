@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/42a182743f.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/form.css" />
+    <title>Update Post</title>
+  </head>
+  <body>
+    <%- include("../partials/navbar.ejs") %>
+    <div class="form-container">
+      <!-- icon -->
+      <h1>
+        Update Post
+
+        <!-- add icon -->
+        <i class="fas fa-plus"></i>
+      </h1>
+      <% if(error){%>
+      <small class="error">
+        <i class="fas fa-exclamation-circle"></i>
+        <%=error%>
+      </small>
+      <%} %>
+      <form
+        action="/api/v1/posts/<%=post?._id%>?_method=PUT"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <!-- Post Title -->
+        <div class="input-wrapper">
+          <label for="title">Post Title</label>
+          <input type="text" name="title" value="<%=post?.title%>" />
+          <!-- err -->
+        </div>
+
+        <!-- Category -->
+        <div class="input-wrapper">
+          <label for="category">Category</label>
+          <select value="<%=post?.category%>" name="category">
+            <option value="web-development">Web Development</option>
+            <option value="tech-gadgets">Tech Gadgets</option>
+            <option value="business">Business</option>
+            <option value="health-wellness">Health & Wellness</option>
+            <option value="other">Other</option>
+          </select>
+          <!-- err -->
+        </div>
+        <div class="input-wrapper">
+          <!-- Post Body -->
+          <label for="description">Post Body</label>
+          <textarea name="description" cols="30" rows="10">
+<%=post?.description%></textarea
+          >
+          <!-- err -->
+        </div>
+        <!-- Post Image -->
+        <div class="input-wrapper">
+          <label for="post_image">Post Image</label>
+          <input type="file" name="post_image" />
+          <!-- err -->
+        </div>
+
+        <button type="submit">Update</button>
+      </form>
+    </div>
+
+    <%- include("../partials/footer.ejs") %>
+  </body>
+</html>
