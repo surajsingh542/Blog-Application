@@ -14,7 +14,18 @@ const postSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ["react js", "html", "css", "node js", "javascript", "other"],
+      enum: [
+        "react js",
+        "web-development",
+        "tech-gadgets",
+        "business",
+        "health-wellness",
+        "html",
+        "css",
+        "node js",
+        "javascript",
+        "other",
+      ],
     },
     image: {
       type: String,
