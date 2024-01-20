@@ -37,6 +37,9 @@ const registerCtrl = async (req, res, next) => {
     //   data: user,
     // });
 
+    // save the user into session
+    req.session.userAuth = userFound._id;
+
     // redirect
     res.redirect("/api/v1/users/profile-page");
   } catch (error) {
